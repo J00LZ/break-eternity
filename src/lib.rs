@@ -390,8 +390,8 @@ impl Decimal {
     /// Creates a Decimal from a sign, a layer and a magnitude
     ///
     /// This function does not normalize the inputs
-    pub fn from_components_no_normalize(sign: i8, layer: i64, mag: Number) -> Decimal {
-        Decimal::default().set_from_components_no_normalize(sign, layer, mag)
+    pub const fn from_components_no_normalize(sign: i8, layer: i64, mag: Number) -> Decimal {
+        Decimal { sign, layer, mag }
     }
 
     /// Creates a Decimal from a mantissa and an exponent
@@ -701,52 +701,52 @@ impl Decimal {
     }
 
     /// Returns a zero Decimal
-    pub fn zero() -> Decimal {
+    pub const fn zero() -> Decimal {
         Decimal::from_components_no_normalize(0, 0, 0.0)
     }
 
     /// Returns a one Decimal
-    pub fn one() -> Decimal {
+    pub const fn one() -> Decimal {
         Decimal::from_components_no_normalize(1, 0, 1.0)
     }
 
     /// Returns a negative one Decimal
-    pub fn neg_one() -> Decimal {
+    pub const fn neg_one() -> Decimal {
         Decimal::from_components_no_normalize(-1, 0, 1.0)
     }
 
     /// Returns a two Decimal
-    pub fn two() -> Decimal {
+    pub const fn two() -> Decimal {
         Decimal::from_components_no_normalize(1, 0, 2.0)
     }
 
     /// Returns a ten Decimal
-    pub fn ten() -> Decimal {
+    pub const fn ten() -> Decimal {
         Decimal::from_components_no_normalize(1, 0, 10.0)
     }
 
     /// Returns a NaN Decimal
-    pub fn nan() -> Decimal {
+    pub const fn nan() -> Decimal {
         Decimal::from_components_no_normalize(0, 0, f64::NAN)
     }
 
     /// Returns a positive infinity Decimal
-    pub fn inf() -> Decimal {
+    pub const fn inf() -> Decimal {
         Decimal::from_components_no_normalize(1, 0, f64::INFINITY)
     }
 
     /// Returns a negative infinity Decimal
-    pub fn neg_inf() -> Decimal {
+    pub const fn neg_inf() -> Decimal {
         Decimal::from_components_no_normalize(-1, 0, f64::NEG_INFINITY)
     }
 
     /// Returns the largest safe Decimal that can be represented from an f64
-    pub fn maximum() -> Decimal {
+    pub const fn maximum() -> Decimal {
         Decimal::from_components_no_normalize(1, 0, f64::MAX)
     }
 
     /// Returns the smallest safe Decimal that can be represented from an f64
-    pub fn minimum() -> Decimal {
+    pub const fn minimum() -> Decimal {
         Decimal::from_components_no_normalize(1, 0, f64::MIN)
     }
 
